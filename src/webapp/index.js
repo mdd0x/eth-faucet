@@ -144,7 +144,7 @@ function renderApp () {
   render([
 
     h('nav.navbar.navbar-default', [
-      h('h1.container-fluid', 'MetaMask Ether Faucet')
+      h('h1.container-fluid', 'Bitrock Testnet Faucet')
     ]),
 
     h('section.container', [
