@@ -114,7 +114,7 @@ function startServer () {
       const balanceTooFull = balance.gt(MAX_BALANCE)
       if (balanceTooFull) {
         console.log(`${requestorMessage} - already has too much ether`)
-        return didError(res, new Error('User is greedy - already has too much ether'))
+        return didError(res, new Error('Already has too much Bitrock, Comeback tomorrow'))
       }
       // send value
       const txHash = await ethQuery.sendTransaction({

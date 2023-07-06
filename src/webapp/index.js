@@ -144,21 +144,22 @@ function renderApp () {
   render([
 
     h('nav.navbar.navbar-default', [
-      h('h1.container-fluid', 'Bitrock Testnet Faucet')
+      h('h2.container-fluid', 'Bitrock Testnet Faucet')
     ]),
 
     h('section.container', [
 
       h('div.panel.panel-default', [
         h('div.panel-heading', [
-          h('h3', 'faucet')
+          h('h3', 'Coinbase Faucet')
         ]),
         h('div.panel-body', [
-          h('div', 'address: ' + state.faucetAddress),
-          h('div', 'balance: ' + formatBalance(state.faucetBalance)),
-          h('button.btn.btn-success', 'request 1 ether from faucet', {
+          h('div', 'Coinbase: ' + state.faucetAddress),
+          h('div', 'Balance: ' + formatBalance(state.faucetBalance)),
+          h('button.btn.btn-success', 'request 1 BITROCK', {
             style: {
-              margin: '4px'
+              margin: '4px',
+              display: 'block'
             },
             // disabled: state.userAddress ? null : true,
             click: getEther
@@ -168,33 +169,11 @@ function renderApp () {
 
       h('div.panel.panel-default', [
         h('div.panel-heading', [
-          h('h3', 'user')
+          h('h3', 'Your Account')
         ]),
         h('div.panel-body', [
           h('div', 'address: ' + state.userAddress),
           h('div', 'balance: ' + formatBalance(state.fromBalance)),
-          h('div', 'donate to faucet:'),
-          h('button.btn.btn-warning', '1 ether', {
-            style: {
-              margin: '4px'
-            },
-            // disabled: state.userAddress ? null : true,
-            click: sendTx.bind(null, 1)
-          }),
-          h('button.btn.btn-warning', '10 ether', {
-            style: {
-              margin: '4px'
-            },
-            // disabled: state.userAddress ? null : true,
-            click: sendTx.bind(null, 10)
-          }),
-          h('button.btn.btn-warning', '100 ether', {
-            style: {
-              margin: '4px'
-            },
-            // disabled: state.userAddress ? null : true,
-            click: sendTx.bind(null, 100)
-          })
         ])
       ]),
 
@@ -209,7 +188,7 @@ function renderApp () {
           }
         }, (
           state.transactions.map((txHash) => {
-            return link(`https://ropsten.etherscan.io/tx/${txHash}`, txHash)
+            return link(`https://testnetscan.bit-rock.io/tx/${txHash}`, txHash)
           })
         ))
       ])
@@ -314,5 +293,5 @@ function render (elements) {
 }
 
 function formatBalance (balance) {
-  return balance ? balance + ' ether' : '...'
+  return balance ? balance + ' BITROCK' : '...'
 }
