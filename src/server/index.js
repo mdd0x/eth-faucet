@@ -73,14 +73,14 @@ function startServer () {
     console.log('and proxying to', config.rpcOrigin)
   })
 
-  setupGracefulShutdown(server)
+  // setupGracefulShutdown(server)
 
   // Lazy nonce tracking fix:
   // Force an exit (docker will trigger a restart)
-  setTimeout(() => {
-    console.log('Restarting for better nonce tracking')
-    shutdown()
-  }, AUTO_RESTART_INTERVAL)
+  // setTimeout(() => {
+  //   console.log('Restarting for better nonce tracking')
+  //   shutdown()
+  // }, AUTO_RESTART_INTERVAL)
 
   async function handleRequest (req, res) {
     try {
@@ -131,21 +131,21 @@ function startServer () {
     }
   }
 
-  function didError (res, err) {
-    res.status(500).json({ error: err.message })
-  }
+  // function didError (res, err) {
+  //   res.status(500).json({ error: err.message })
+  // }
 
-  function setupGracefulShutdown () {
-    process.once('SIGTERM', shutdown)
-    process.once('SIGINT', shutdown)
-  }
+  // function setupGracefulShutdown () {
+  //   process.once('SIGTERM', shutdown)
+  //   process.once('SIGINT', shutdown)
+  // }
 
-  // Do graceful shutdown
-  function shutdown () {
-    console.log('gracefully shutting down...')
-    server.close(() => {
-      console.log('shut down complete.')
-      process.exit(0)
-    })
-  }
+  // // Do graceful shutdown
+  // function shutdown () {
+  //   console.log('gracefully shutting down...')
+  //   server.close(() => {
+  //     console.log('shut down complete.')
+  //     process.exit(0)
+  //   })
+  // }
 }
